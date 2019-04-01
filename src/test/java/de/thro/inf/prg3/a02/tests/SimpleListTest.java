@@ -1,6 +1,8 @@
 package de.thro.inf.prg3.a02.tests;
 
+import com.sun.source.tree.AssertTree;
 import de.thro.inf.prg3.a02.SimpleFilter;
+import de.thro.inf.prg3.a02.SimpleList;
 import de.thro.inf.prg3.a02.SimpleListImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,6 +65,31 @@ public class SimpleListTest {
 		for(Object o : result){
 			int i = (int)o;
 			assertTrue(i % 2 == 0);
+		}
+	}
+
+	@Test
+	void testFilterSmallerThreeAnonymousClass() {
+		SimpleListImpl result = (SimpleListImpl) testList.filter(new SimpleFilter(){
+			@Override
+			public boolean include(Object item) {
+				int current = (int)item;
+				return current <= 2;
+			}
+		});
+
+		for(Object o : result) {
+			int i = (int)o;
+			assertTrue(i <= 2);
+		}
+	}
+
+	@Test
+	void testFilterSmallerThreeLambdaExpression() {
+		SimpleListImpl result = (SimpleListImpl) testList.filter(o -> ((int)o) <= 3);
+		for (Object o : result) {
+			int current = (int)o;
+			assertTrue(current <= 3);
 		}
 	}
 }

@@ -31,7 +31,7 @@ public class SimpleListImpl implements SimpleList, Iterable<Object> {
     public SimpleList filter(SimpleFilter sl) {
         SimpleList results = new SimpleListImpl();
         for (Object o : this) {
-            if(sl.include(o))
+            if (sl.include(o))
                 results.add(o);
         }
         return results;

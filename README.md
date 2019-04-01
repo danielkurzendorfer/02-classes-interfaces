@@ -35,12 +35,15 @@ _Note: the concept of an iterator will be discussed in detail in a few weeks._
 2. Implement `Element` as static inner class of `SimpleListImpl`.
 	- Why is this class static, and ideally `private`?
 	    - static: keine Ahnung
-	    - private: Elemente einer Liste sind nur über die Liste interessant, d.h. ohne Liste bestehen diese nicht. Daher können diese 'private' sein, da nur die Liste die Verwaltung übernimmt.
+	    - private: Elemente einer Liste sind nur über die Liste interessant, d.h. ohne Liste bestehen diese nicht. Daher können diese `private` sein, da nur die Liste die Verwaltung übernimmt.
 3. Implement the `Iterator` interface as inner class of `SimpleListImpl`.
 	- Why is it helpful to make this class non-static?
+	    - sonst läuft der Test nicht durch ... hängt beim ersten Test (anonyme Klasse)
 4. Add the `Iterable` interface to your `SimpleListImpl`, and implement the required methods.
 	- Why is implementing the `Iterable` interface essential for a (good) list implementation? (Hint: Check the test cases!)
+	    - Möglichkeit, mittels foreach durch die eigen implementierte Liste zu iterieren
 	- Are there any language definition constraints to this?
+	    - keine Ahnung
 
 
 ## Anonymous (inner) classes and lambda expressions
