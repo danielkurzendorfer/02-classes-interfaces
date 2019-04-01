@@ -29,9 +29,13 @@ _Note: the concept of an iterator will be discussed in detail in a few weeks._
 1. [What is a static class?](http://lmgtfy.com/?q=java+static+inner+class)
 	- Refresh your knowledge on UML (_e.g._ [here](http://plantuml.com/class-diagram))
 	- What's the difference between a regular inner and static inner class?
+	    - Von einer statischen Klasse kann man kein Objekt erzeugen, bei einer normalen Klasse muss man ein Objekt erzeugen
 	- Can you think of some use cases for both?
+	    - (Static) Inner class: Element einer Liste
 2. Implement `Element` as static inner class of `SimpleListImpl`.
 	- Why is this class static, and ideally `private`?
+	    - static: keine Ahnung
+	    - private: Elemente einer Liste sind nur über die Liste interessant, d.h. ohne Liste bestehen diese nicht. Daher können diese 'private' sein, da nur die Liste die Verwaltung übernimmt.
 3. Implement the `Iterator` interface as inner class of `SimpleListImpl`.
 	- Why is it helpful to make this class non-static?
 4. Add the `Iterable` interface to your `SimpleListImpl`, and implement the required methods.
