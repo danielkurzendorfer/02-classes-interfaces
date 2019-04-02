@@ -1,8 +1,6 @@
 package de.thro.inf.prg3.a02.tests;
 
-import com.sun.source.tree.AssertTree;
 import de.thro.inf.prg3.a02.SimpleFilter;
-import de.thro.inf.prg3.a02.SimpleList;
 import de.thro.inf.prg3.a02.SimpleListImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

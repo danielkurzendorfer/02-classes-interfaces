@@ -1,13 +1,12 @@
 package de.thro.inf.prg3.a02;
 
-import javax.swing.text.html.HTMLDocument;
 import java.util.Iterator;
 
 /**
  * @author Peter Kurfer
  * Created on 10/6/17.
  */
-public class SimpleListImpl implements SimpleList, Iterable {
+public class SimpleListImpl implements SimpleList, Iterable<Object> {
 
     Element head;
     int size = 0;
