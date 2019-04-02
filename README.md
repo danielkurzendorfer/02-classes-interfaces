@@ -29,16 +29,16 @@ _Note: the concept of an iterator will be discussed in detail in a few weeks._
 1. [What is a static class?](http://lmgtfy.com/?q=java+static+inner+class)
 	- Refresh your knowledge on UML (_e.g._ [here](http://plantuml.com/class-diagram))
 	- What's the difference between a regular inner and static inner class?
-	    - Von einer statischen Klasse kann man kein Objekt erzeugen, bei einer normalen Klasse muss man ein Objekt erzeugen
+	    - Von einer statischen Klasse muss ich kein Objekt erzeugen, bei einer normalen Klasse muss man ein Objekt erzeugen, um auf die Variablen darin zuzugreifen
 	- Can you think of some use cases for both?
 	    - (Static) Inner class: Element einer Liste
 2. Implement `Element` as static inner class of `SimpleListImpl`.
 	- Why is this class static, and ideally `private`?
-	    - static: keine Ahnung
+	    - static: Elemente stehen alleine da, weil sie keine Informationen außen rum benötigen
 	    - private: Elemente einer Liste sind nur über die Liste interessant, d.h. ohne Liste bestehen diese nicht. Daher können diese `private` sein, da nur die Liste die Verwaltung übernimmt.
 3. Implement the `Iterator` interface as inner class of `SimpleListImpl`.
 	- Why is it helpful to make this class non-static?
-	    - sonst läuft der Test nicht durch ... hängt beim ersten Test (anonyme Klasse)
+	    - er muss auf die nächsten Elemente zugreifen können und muss merken, wann er am Ende steht
 4. Add the `Iterable` interface to your `SimpleListImpl`, and implement the required methods.
 	- Why is implementing the `Iterable` interface essential for a (good) list implementation? (Hint: Check the test cases!)
 	    - Möglichkeit, mittels foreach durch die eigen implementierte Liste zu iterieren
@@ -48,7 +48,7 @@ _Note: the concept of an iterator will be discussed in detail in a few weeks._
 
 ## Anonymous (inner) classes and lambda expressions
 
-1. Implement the `filter` method for your `SimpleListImpl` class (see `SimpleFilter` interface).
+1. Implement the `filter` method for your `SimpleListImpl` class (see `SimpleFilter` interface). (DK: functionalInterface ?)
 2. Check the given test suite for an example on 
 	- how to use an anonymous class with an interface.
 	- how an anonymous class can be replaced by a lambda expression.

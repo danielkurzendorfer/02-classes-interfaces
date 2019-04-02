@@ -1,12 +1,13 @@
 package de.thro.inf.prg3.a02;
 
+import javax.swing.text.html.HTMLDocument;
 import java.util.Iterator;
 
 /**
  * @author Peter Kurfer
  * Created on 10/6/17.
  */
-public class SimpleListImpl implements SimpleList, Iterable<Object> {
+public class SimpleListImpl implements SimpleList, Iterable {
 
     Element head;
     int size = 0;
@@ -74,6 +75,7 @@ public class SimpleListImpl implements SimpleList, Iterable<Object> {
     private class SimpleIteratorImpl implements Iterator<Object> {
         Element curr = head;
 
+        // Der Zeiger zeigt am Anfang auf das erste Element der Liste, daher zeigt er quasi auf das nächste Element
         @Override
         public boolean hasNext() {
             return curr != null;
