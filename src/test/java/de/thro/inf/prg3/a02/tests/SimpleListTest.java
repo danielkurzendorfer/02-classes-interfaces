@@ -57,6 +57,7 @@ public class SimpleListTest {
 		}
 	}
 
+	// Filter ist Functional Interface, deshalb geht Lambda Ausdruck
 	@Test
 	void testFilterLambda(){
 		SimpleListImpl result = (SimpleListImpl) testList.filter(o -> ((int)o) % 2 == 0);
@@ -89,5 +90,17 @@ public class SimpleListTest {
 			int current = (int)o;
 			assertTrue(current <= 3);
 		}
+	}
+
+	// hier geht nur anonyme Klasse, da int count = 0 nicht bei Lambda berücksichtigt werden kann
+	@Test
+	void testJedesDritteElement() {
+		SimpleListImpl result = (SimpleListImpl) testList.filter(new SimpleFilter() {
+			int count = 0;
+			@Override
+			public boolean include(Object item) {
+				return ++count % 3 == 0;
+			}
+		});
 	}
 }

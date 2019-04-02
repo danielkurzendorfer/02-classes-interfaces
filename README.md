@@ -56,3 +56,50 @@ _Note: the concept of an iterator will be discussed in detail in a few weeks._
 5. Review anonymous classes and lambdas.
 	- Lambda expressions look very convenient; can you think of a scenario where they should not be used?
 	- Recall how scoping works for anonymous (inner or local) classes; can you think of a scenario where to avoid them?
+	    - bei jedem dritten Element geht das nicht, da der Lambda-Ausdruck keine Variable haben kann, die hochzählt... da hilft nur eine anonyme Klasse
+
+
+Vorgehen:
+- geht zuerst nicht zum kompilieren -> IntelliJ zu implementierende Methoden geben lassen
+- private (muss keiner Wissen) statische Klasse "Element" - was braucht es? Zeiger auf nächstes Element und Inhalt
+- Kontruktor um Inhalt zu setzen
+- Liste braucht Basiselement ("head"), anfangs null (Element head = null;)
+- Add-Methode: 2 Fälle --> Ist 1. Element null oder nicht?
+    - if(head == null) { head = new Element(o); return; }
+    - Element tmp = head; while(tmp.next != null) { tmp = tmp.Next; } tmp.next = new Element(o);
+    - Möglich: Schlusselement merken, dann spart man sich die Schleife
+- Wie bekommt man size raus? size++; in der add()-Methode
+
+Einschub:
+- Initiale Werte, die schon eingefügt werden sollen: in der Listen Klasse...
+    - public SimpleListImpl(Object... inits) {
+        for(Object o : inits) {
+            add(o);
+        }
+      }
+Ende Einschub
+ 
+- In die Filter-Methode einfügen:
+    - SimpleListImpl sl = new SimpleListImpl();
+      for (Object o : this)
+        if(filter.include(o)) sl.add(o);
+      return sl;
+    - benötige einen Iterator für die foreach Schleife, daher "Iterable" an SimpleListImpl-Klasse anfügen und
+        public Iterator iterator() {
+            return new Iterator() {
+                Element cur = head;
+                
+                @override
+                public boolean hasNext() {
+                    return cur != null;
+                }
+                @override
+                public Object next() {
+                    Object o = cur.o;
+                    cur = cur.next;
+                    return o;
+                }
+            }
+        }
+        -> Das ist eine anonyme Klasse
+                    
